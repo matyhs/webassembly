@@ -1,0 +1,23 @@
+[package]
+name = "booklib"
+version = "0.1.0"
+authors = ["Matthew Que <matthew.neale.que@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+wapc-guest = "0.4.0"
+wasmcloud-actor-keyvalue = { version = "0.2.1", features = ["guest"] }
+wasmcloud-actor-core = { version = "0.2.2", features = ["guest"] }
+wasmcloud-actor-http-server = { version = "0.1.1", features = ["guest"]}
+serde_json = "1.0.59"
+serde = { version = "1.0.125", features = ["derive"]}
+
+[profile.release]
+# Optimize for small code size
+opt-level = "s"
+lto = true
